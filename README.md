@@ -18,3 +18,9 @@
 - Real-time network animation
 - Agent movement tracking
 - Interactive parameter control
+
+### Dependencies
+- Python 3.8+
+- NetworkX 
+- Matplotlib
+- NumPy 
