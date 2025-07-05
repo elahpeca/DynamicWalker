@@ -147,12 +147,19 @@ class GraphAnimator:
         )
 
     def _render_info_panel(self, frame):
-        """Render information panel with current stats."""
+        """Render information panel with current stats including graph density."""
         G = self.dynamic_graph.G
+        n = G.number_of_nodes()
+        m = G.number_of_edges()
+        
+        # Calculate density (handle cases when n < 2)
+        density = (2 * m) / (n * (n - 1)) if n > 1 else 0.0
+        
         info = (
             f"Step: {frame}/{self.steps}\n"
-            f"Nodes: {G.number_of_nodes()}\n"
-            f"Edges: {G.number_of_edges()}\n"
+            f"Nodes: {n}\n"
+            f"Edges: {m}\n"
+            f"Density: {density:.4f}\n"
             f"Components: {nx.number_connected_components(G)}\n"
             f"Current node: {self.walker.current_node}"
         )
@@ -171,7 +178,7 @@ class GraphAnimator:
                 alpha=0.8
             )
         )
-
+        
     def _update_frame(self, frame):
         """Update function for animation frames."""
         self.ax.clear()

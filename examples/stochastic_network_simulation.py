@@ -14,10 +14,9 @@ stochastic_params = {
     "max_degree": 8,
     "min_degree": 1,
     "target_components": 1,
-    "min_component_size": 30,
+    "min_component_size": 1,
     "edge_aging_factor": 0.92,
     "node_aging_factor": 0.99,
-    "random_connect_prob": 0.7
 }
 
 stochastic_net = DynamicGraph(**stochastic_params)

@@ -45,8 +45,6 @@ evolution_params = {
     "edge_add_prob": 0.2,
     "edge_remove_prob": 0.08,
     "triadic_prob": 0.4,
-    "reconnection_prob": 0.15,
-    "content_update_prob": 0.3
 }
 
 # Visualization with 800 steps at 50ms intervals
