@@ -45,8 +45,6 @@ social_evolution = {
     "edge_add_prob": 0.3,
     "edge_remove_prob": 0.15,
     "triadic_prob": 0.6,
-    "reconnection_prob": 0.25,
-    "content_update_prob": 0.4
 }
 
 # Visualization with 800 steps at 50ms intervals
