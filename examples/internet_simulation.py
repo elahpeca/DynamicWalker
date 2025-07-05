@@ -20,11 +20,11 @@ internet_params = {
     "preferential_exponent": 1.1
 }
 
-dynamic_graph = DynamicGraph(**internet_params)
+internet_graph = DynamicGraph(**internet_params)
 
 # Web crawler with exploration/exploitation balance and cross-component jumps
 crawler_params = {
-    "graph": dynamic_graph,
+    "graph": internet_graph,
     "bias_type": "degree",
     "teleport_probability": 0.1,
     "stay_probability": 0.05,
@@ -50,5 +50,5 @@ evolution_params = {
 }
 
 # Visualization with 800 steps at 50ms intervals
-animator = GraphAnimator(dynamic_graph, walker, steps=800, interval=50, **evolution_params)
+animator = GraphAnimator(internet_graph, walker, steps=800, interval=50, **evolution_params)
 animator.animate()

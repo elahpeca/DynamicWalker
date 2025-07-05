@@ -1,53 +1,54 @@
 """
-Simulation of stochastic network dynamics with random connectivity,
-modeling emergent patterns in complex systems.
+Simulation of social network dynamics with aging connections,
+modeling relationship formation and community evolution over time.
 """
 
 from dynamic_walker.graph.dynamic_graph import DynamicGraph
 from dynamic_walker.graph.biased_walker import BiasedRandomWalker
 from dynamic_walker.visualization.animator import GraphAnimator
 
-# Stochastic network with random connections and aging
-stochastic_params = {
-    "strategy": "random",
-    "initial_nodes": 30,
-    "max_degree": 8,
+# Social network with community structure and relationship aging
+social_params = {
+    "strategy": "aging",
+    "initial_nodes": 40,
+    "max_degree": 15,
     "min_degree": 1,
-    "target_components": 1,
-    "min_component_size": 30,
-    "edge_aging_factor": 0.92,
-    "node_aging_factor": 0.99,
-    "random_connect_prob": 0.7
+    "target_components": 4,
+    "min_component_size": 2,
+    "edge_aging_factor": 0.85,
+    "node_aging_factor": 0.95,
+    "decay_factor": 0.9
 }
 
-stochastic_net = DynamicGraph(**stochastic_params)
+social_graph = DynamicGraph(**social_params)
 
-# Network navigator with weight-based movement
-navigator_params = {
-    "graph": stochastic_net,
-    "bias_type": "weight",
-    "teleport_probability": 0.1,
-    "stay_probability": 0.1,
-    "exploration_factor": 1.0,
-    "adaptive_bias": False,
-    "decay_factor": 0.9,
-    "max_teleport_distance": 1,
-    "min_weight": 0.1,
-    "teleport_strategy": "component"
+# Social agent navigating through activity and connections
+social_walker_params = {
+    "graph": social_graph,
+    "bias_type": "activity",
+    "teleport_probability": 0.2,
+    "stay_probability": 0.05,
+    "exploration_factor": 0.8,
+    "adaptive_bias": True,
+    "decay_factor": 0.85,
+    "max_teleport_distance": 2,
+    "min_weight": 0.05,
+    "teleport_strategy": "uniform"
 }
 
-navigator = BiasedRandomWalker(**navigator_params)
+social_walker = BiasedRandomWalker(**social_walker_params)
 
-# Stochastic network evolution parameters
-evolution_params = {
-    "node_add_prob": 0.02,
-    "node_remove_prob": 0.005,
-    "edge_add_prob": 0.4,
-    "edge_remove_prob": 0.2,
-    "triadic_prob": 0.3,
-    "reconnection_prob": 0.15,
-    "content_update_prob": 0.25
+# Social network evolution characteristics
+social_evolution = {
+    "node_add_prob": 0.04,
+    "node_remove_prob": 0.003,
+    "edge_add_prob": 0.3,
+    "edge_remove_prob": 0.15,
+    "triadic_prob": 0.6,
+    "reconnection_prob": 0.25,
+    "content_update_prob": 0.4
 }
 
-animator = GraphAnimator(stochastic_net, navigator, steps=800, interval=50, **evolution_params)
+# Visualization with 800 steps at 50ms intervals
+animator = GraphAnimator(social_graph, social_walker,steps=800,interval=50,**social_evolution)
 animator.animate()
