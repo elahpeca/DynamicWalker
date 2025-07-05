@@ -2,25 +2,32 @@
 
 ## Adaptive navigation in evolving networks
 
-### Core features
+**Core Features:**
 
-**Dynamic network simulation**
-- On-the-fly graph modifications
-- Configurable evolution rules
-- Weighted edge support
+1. **Dynamic Graph Generation**
+   - Multiple growth strategies:
+     - Random connections
+     - Preferential attachment
+     - Aging-based connections
+   - Parameter control:
+     - Node degree limits
+     - Component management
+     - Aging rates
 
-**Intelligent navigation**
-- Multiple bias strategies
-- Adaptive exploration logic
-- Teleportation mechanics
+2. **Biased Random Walk Navigation**
+   - Activity-based traversal 
+   - Degree-weighted movement 
+   - Cross-component teleportation 
+   - Configurable exploration/exploitation balance
+   - Adaptive walker memory and decay
 
-**Visualization**
-- Real-time network animation
-- Agent movement tracking
-- Interactive parameter control
+3. **Visualization**
+   - Real-time animation of walker movements
+   - Agent path tracking with history
+   - Degree-based node coloring and scaling
+   - Current walker position highlighting
 
-### Dependencies
+**Dependencies:**
 - Python 3.8+
-- NetworkX 
-- Matplotlib
-- NumPy 
+- NetworkX 2.6+
+- Matplotlib 3.5+
